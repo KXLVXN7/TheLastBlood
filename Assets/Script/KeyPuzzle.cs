@@ -5,18 +5,7 @@ using UnityEngine;
 public class KeyPuzzle : MonoBehaviour
 {
     public List<GameObject> puzzlePieces;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public PuzzleManager puzzleManager;
 
     public void CheckPuzzleStatus()
     {
@@ -24,10 +13,11 @@ public class KeyPuzzle : MonoBehaviour
         {
             if (!g.GetComponent<ObjectRotator>().kelar)
             {
-                Debug.Log("blum kelar");
+                Debug.Log("Belum Selesai");
                 return;
             }
         }
-        Debug.Log("kelar");
+            Debug.Log("Selesai");
+            puzzleManager.PuzzleHide();
     }
 }

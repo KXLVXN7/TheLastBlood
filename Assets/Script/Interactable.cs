@@ -5,7 +5,6 @@ public class Interactable : MonoBehaviour
     public PuzzleManager puzzleManager;
     public PlayerMovement playerMovement;
     public float interactionDistance = 2f;
-
     private bool isInteracting = false;
     void Update()
     {
@@ -15,11 +14,11 @@ public class Interactable : MonoBehaviour
             {
                 if (isInteracting)
                 {
-                    UnInteract();
+                    UnInteractPlayer();
                 }
                 else
                 {
-                    Interact();
+                    InteractWithObject();
                 }
             }
         }
@@ -33,32 +32,19 @@ public class Interactable : MonoBehaviour
         return distance <= interactionDistance;
     }
 
-    void Interact()
+    void InteractWithObject()
     {
         puzzleManager.ShowPuzzle();
         playerMovement.SetCanMove(false);
         playerMovement.Freze();
         isInteracting= true;
 
-        // Subscribe to the puzzle completion event
-        puzzleManager.OnPuzzleCompleted += HandlePuzzleCompleted;
     }
-    void UnInteract()
+    public void UnInteractPlayer()
     {
         playerMovement.SetCanMove(true);
         playerMovement.Unfreeze();
         isInteracting= false;
-    }
-
-    void HandlePuzzleCompleted()
-    {
-        puzzleManager.HidePuzzle();
-        playerMovement.SetCanMove(true);
-        // Unsubscribe from the event to avoid memory leaks
-        puzzleManager.OnPuzzleCompleted -= HandlePuzzleCompleted;
-
-        // Ensure that the player can move again
-
     }
 }
 
