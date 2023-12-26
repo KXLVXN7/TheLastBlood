@@ -44,7 +44,14 @@ public class Interactable : MonoBehaviour
     {
         playerMovement.SetCanMove(true);
         playerMovement.Unfreeze();
-        isInteracting= false;
+        isInteracting = false;
+    }
+    public void PlayerFinishInteract()
+    {
+        playerMovement.SetCanMove(true);
+        playerMovement.Unfreeze();
+        isInteracting = false;
+        Debug.Log("Interaksi Puzzle Selesai");
     }
 }
 

@@ -16,7 +16,7 @@ public class PuzzleManager : MonoBehaviour
     public void PuzzleHide()
     {
         puzzleCanvas.SetActive(false);
-        interacble.UnInteractPlayer();
+        interacble.PlayerFinishInteract();
         
     }
 }

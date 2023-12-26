@@ -9,7 +9,7 @@ public class ObjectRotator : MonoBehaviour
     public KeyPuzzle puzzleChecker;
     void Update()
     {
-
+        checkStatusPuzzle();
         if (Mathf.RoundToInt(transform.GetComponent<RectTransform>().eulerAngles.z) == 0)
         {
             kelar = true;
@@ -27,7 +27,7 @@ public class ObjectRotator : MonoBehaviour
                 hit.transform.eulerAngles += new Vector3(0, 0, 90);
 
             }
-            checkStatusPuzzle();
+            
             
 
         }
