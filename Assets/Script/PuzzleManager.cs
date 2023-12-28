@@ -4,6 +4,7 @@ using System;
 public class PuzzleManager : MonoBehaviour
 {
     public GameObject puzzleCanvas;
+    public SceneManagers gantiScene;
     public Interactable interacble;
     void Start()
     {
@@ -17,6 +18,6 @@ public class PuzzleManager : MonoBehaviour
     {
         puzzleCanvas.SetActive(false);
         interacble.PlayerFinishInteract();
-        
+        gantiScene.ChangeToScene("FightLv1");
     }
 }

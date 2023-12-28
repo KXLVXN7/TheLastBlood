@@ -27,9 +27,6 @@ public class ObjectRotator : MonoBehaviour
                 hit.transform.eulerAngles += new Vector3(0, 0, 90);
 
             }
-            
-            
-
         }
     }
     public void checkStatusPuzzle()
