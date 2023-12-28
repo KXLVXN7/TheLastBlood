@@ -42,6 +42,7 @@ public class Interactable : MonoBehaviour
     }
     public void UnInteractPlayer()
     {
+        puzzleManager.HidePuzzle();
         playerMovement.SetCanMove(true);
         playerMovement.Unfreeze();
         isInteracting = false;

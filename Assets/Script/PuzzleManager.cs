@@ -14,6 +14,10 @@ public class PuzzleManager : MonoBehaviour
     {
         puzzleCanvas.SetActive(true);
     }
+    public void HidePuzzle()
+    {
+        puzzleCanvas.SetActive(false);
+    }
     public void PuzzleHide()
     {
         puzzleCanvas.SetActive(false);
