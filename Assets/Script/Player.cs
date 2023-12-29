@@ -5,23 +5,28 @@ public class Player : MonoBehaviour
     public string playerName = "Player";
     public int health = 100;
     public int attackPower = 10;
-    public Animation playerAnim;
+    public Animator playerAnim;
     private bool IsPlayerAlive()
     {
         return health > 0;
     }
 
-    // Fungsi ini akan dipanggil setiap frame
-    void OnCollisionEnter2D()
+    private void Update()
     {
-        // Pemain dapat menanggapi serangan musuh selama pemain masih hidu
-        if (IsPlayerAlive())
+        Attack1();
+    }
+
+    // Fungsi ini akan dipanggil setiap frame
+    private void Attack1()
+    {
+        if (IsPlayerAlive() && Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                // Pemain menyerang saat tombol spasi ditekan
-                Attack(FindObjectOfType<Enemy>());
-            }
+            playerAnim.SetBool("attack_1", true);
+            Debug.Log("Anim attack");
+        }
+        else if (IsPlayerAlive() && !Input.GetKeyDown(KeyCode.Space)) 
+        {
+            playerAnim.SetBool("attack_1", false);
         }
     }
 

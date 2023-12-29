@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  anim: {fileID: 0}
+  anim: {fileID: 361060934}
 --- !u!50 &361060938
 Rigidbody2D:
   serializedVersion: 4
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   playerName: Player
   health: 100
   attackPower: 10
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 361060934}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
