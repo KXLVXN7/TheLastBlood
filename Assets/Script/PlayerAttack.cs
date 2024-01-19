@@ -1,10 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 
 public class PlayerAttack : MonoBehaviour
 {
     public Animator playerAnim;
     public Transform attackPoint;
+    public Vector3 direction;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
     private bool isAttacking = false;
 
     // Damage yang akan diberikan saat menyerang
@@ -44,6 +49,26 @@ public class PlayerAttack : MonoBehaviour
 
         // Call a method to reset the attack after a duration (adjust as needed)
         StartCoroutine(ResetAttack());
+
+        // Detect Enemies in range of attack
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+   
+
+        // damage them
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(10);
+            Debug.Log("Kamu telah menyerang Enemy");
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+           return;
+        
+        Gizmos.DrawSphere(attackPoint.position, attackRange);
     }
 
     private IEnumerator ResetAttack()
@@ -57,13 +82,18 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = false;
     }
 
+    public void SetDirection(Vector3 newDirection)
+    {
+       
+        direction = newDirection;
+    }
     // Metode ini akan dipanggil ketika objek pemain bersentuhan dengan collider lain yang memiliki tag "Enemy"
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
             // Dapatkan komponen skrip Enemy dari objek musuh
-            Enemy enemy = other.GetComponent<Enemy>();
+            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
 
             // Pastikan objek musuh memiliki komponen Enemy
             if (enemy != null)

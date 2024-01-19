@@ -7,8 +7,8 @@ public class Health : MonoBehaviour
 {
     private float maxHP = 100;
     private float currentHP = 100;
-    public GameObject Dead;
-    [SerializeField] private Image HPBar;
+/*    public GameObject Dead;
+    [SerializeField] private Image HPBar;*/
     public static bool GameIsPaused = false;
 
     private bool isDead = false;
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
-        UpdateHealthBar();
+   /*     UpdateHealthBar();*/
     }
 
     public void Heal(int amount)
@@ -26,10 +26,10 @@ public class Health : MonoBehaviour
         Debug.Log("Player menerima Health,Current Health: " + currentHP);
     }
 
-    private void UpdateHealthBar()
+/*    private void UpdateHealthBar()
     {
         HPBar.fillAmount = currentHP / maxHP;
-    }
+    }*/
 
     private IEnumerator VisualIndicator(Color color)
     {
@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
         {
             currentHP -= damage;
             currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-            UpdateHealthBar();
+   /*         UpdateHealthBar();*/
             StartCoroutine(VisualIndicator(Color.red));
             if (currentHP <= 0)
             {
@@ -67,7 +67,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator DeathPauseAndShowUI()
     {
-        Dead.SetActive(true);
+/*        Dead.SetActive(true);*/
         Time.timeScale = 0f;
         yield return new WaitForSeconds(3.0f);
         // Di sini Anda dapat menambahkan logika lain, seperti mengakhiri permainan atau mengatur ulang level

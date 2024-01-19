@@ -1,21 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Health musuh
-    public int health = 50;
+    public Transform player;
 
-    // Metode untuk mengurangi kesehatan musuh
-    public void TakeDamage(int damage)
+    public bool isFlipped = false;
+
+   public void LookAtPlayer()
     {
-        health -= damage;
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
 
-        // Tambahkan logika tambahan seperti memainkan efek suara atau animasi terkena serangan
-
-        if (health <= 0)
+        if (transform.position.x > player.position.x && isFlipped)
         {
-            // Musuh mati, tambahkan logika tambahan jika diperlukan
-            Destroy(gameObject);
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
+        }
+        else if (transform.position.x < player.position.x && !isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
         }
     }
 }
