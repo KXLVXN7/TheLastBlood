@@ -1,54 +1,55 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
-    public string playerName = "Player";
-    public int health = 100;
-    public int attackPower = 10;
     public Animator playerAnim;
-    private bool IsPlayerAlive()
-    {
-        return health > 0;
-    }
+    private bool isAttacking = false;
 
     private void Update()
     {
-        Attack1();
+        AttackInput();
     }
 
-    // Fungsi ini akan dipanggil setiap frame
-    private void Attack1()
+    private void AttackInput()
     {
-        if (IsPlayerAlive() && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
-            playerAnim.SetBool("attack_1", true);
-            Debug.Log("Anim attack");
+            Attack();
+            Debug.Log("Attack");
         }
-        else if (IsPlayerAlive() && !Input.GetKeyDown(KeyCode.Space)) 
+        else if (!isAttacking)
         {
+            // Reset the attack boolean parameter
             playerAnim.SetBool("attack_1", false);
+            /*Debug.Log("Not Attacking");*/
         }
     }
 
-    public void ReceiveDamage(int damage)
+    private void Attack()
     {
-        health -= damage;
-        Debug.Log($"{playerName} menerima {damage} kerusakan. Sisa kesehatan: {health}");
-
-        if (!IsPlayerAlive())
-        {
-            Debug.Log($"{playerName} dikalahkan!");
-            // Lakukan tindakan setelah player dikalahkan.
-        }
+        PerformAttack();
     }
 
-    public void Attack(Enemy enemy)
+    private void PerformAttack()
     {
-        if (enemy != null && enemy.IsEnemyAlive())
-        {
-            int damage = Random.Range(1, attackPower + 1);
-            enemy.ReceiveDamage(damage);
-            Debug.Log($"{playerName} menyerang {enemy.enemyName} dan menyebabkan {damage} kerusakan.");
-        }
+        isAttacking = true;
+
+        // Set the attack boolean parameter to true
+        playerAnim.SetBool("attack_1", true);
+
+        // Call a method to reset the attack after a duration (adjust as needed)
+        StartCoroutine(ResetAttack());
+    }
+
+    private IEnumerator ResetAttack()
+    {
+        // Wait for the duration of the attack animation
+        yield return new WaitForSeconds(playerAnim.GetCurrentAnimatorClipInfo(0).Length);
+
+        // Reset the attack boolean parameter
+        playerAnim.SetBool("attack_1", false);
+
+        isAttacking = false;
     }
 }

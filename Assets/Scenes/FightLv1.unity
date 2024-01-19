@@ -652,7 +652,7 @@ Transform:
   m_GameObject: {fileID: 213975206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.0375063, y: -0.6426812, z: -0.028573167}
-  m_LocalScale: {x: 0.58500004, y: 0.46006644, z: 1}
+  m_LocalScale: {x: 3.0290205, y: 1.6885158, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54242798}
@@ -699,7 +699,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 464e9a135fcca284a9d5b84123089a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0424529f753e58746b29ec139afb495e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1168,9 +1168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7570a533aa6554aa31728bf39e3116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player
-  health: 100
-  attackPower: 10
   playerAnim: {fileID: 361060934}
 --- !u!1 &519420028
 GameObject:
@@ -2547,7 +2544,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16550922, y: -0.17212969}
+  m_Offset: {x: -20.275406, y: 0.48681092}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2558,7 +2555,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9073162, y: 0.099629045}
+  m_Size: {x: 0.9897289, y: 1.4724221}
   m_EdgeRadius: 0
 --- !u!1 &1297170950
 GameObject:
@@ -3412,7 +3409,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14774084, y: 0.33577597}
+  m_Offset: {x: -8.796659, y: 0.22939521}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3423,7 +3420,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5311384, y: 2.2625182}
+  m_Size: {x: 22.36359, y: 3.051177}
   m_EdgeRadius: 0
 --- !u!1 &1939044584
 GameObject:

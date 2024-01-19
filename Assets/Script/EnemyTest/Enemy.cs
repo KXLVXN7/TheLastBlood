@@ -2,37 +2,48 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public string enemyName = "Musuh";
-    public int health = 100;
-    public int attackPower = 20;
+    public string enemyName = "Enemy";
+    public int health = 50;
+    public int attackPower = 5;
+    private Player player;  // Reference to the Player script
 
-    // Fungsi untuk mengecek apakah musuh masih hidup
-    public bool IsEnemyAlive()
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();  // Find the Player script in the scene
+    }
+
+    private bool IsEnemyAlive()
     {
         return health > 0;
     }
 
-    // Fungsi untuk menangani serangan musuh
-    public void Attack(Player player)
-    {
-        if (IsEnemyAlive())
-        {
-            int damage = Random.Range(1, attackPower + 1);
-            player.ReceiveDamage(damage);
-            Debug.Log($"{enemyName} menyerang player dan menyebabkan {damage} kerusakan.");
-        }
-    }
-
-    // Fungsi untuk menerima kerusakan dari player
     public void ReceiveDamage(int damage)
     {
         health -= damage;
-        Debug.Log($"{enemyName} menerima {damage} kerusakan. Sisa kesehatan: {health}");
+        Debug.Log($"{enemyName} received {damage} damage. Remaining health: {health}");
 
         if (!IsEnemyAlive())
         {
-            Debug.Log($"{enemyName} dikalahkan!");
-            // Lakukan tindakan setelah musuh dikalahkan, misalnya, hancurkan GameObject musuh atau tampilkan pesan kemenangan.
+            Debug.Log($"{enemyName} has been defeated!");
+            // Perform actions after the enemy is defeated.
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            AttackPlayer();
+        }
+    }
+
+    private void AttackPlayer()
+    {
+        if (player != null)
+        {
+/*            // You can modify this part based on your attack logic
+            player.ReceiveDamage(attackPower);*/
+/*            Debug.Log($"{enemyName} attacked {player.playerName} and caused {attackPower} damage.");*/
         }
     }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PuzzlePiece
+  - Enemy
   layers:
   - Default
   - TransparentFX
