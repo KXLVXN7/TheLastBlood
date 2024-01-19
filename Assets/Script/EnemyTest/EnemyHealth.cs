@@ -4,7 +4,7 @@ public class EnemyHealth : MonoBehaviour
 {
     
     // Health musuh
-    public int health = 50;
+    public int health = 100;
 
     // Metode untuk mengurangi kesehatan musuh
     public void TakeDamage(int damage)

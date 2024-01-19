@@ -11,6 +11,7 @@ public class EnemySensor : StateMachineBehaviour
     Rigidbody2D rb;
     Enemy enemy;
 
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -28,11 +29,12 @@ public class EnemySensor : StateMachineBehaviour
         if (Vector2.Distance(player.position, rb.position) <= attackRange)
         {
             animator.SetTrigger("enemyAttack");
+            
         }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.ResetTrigger("enemyAttack");
     }
 }

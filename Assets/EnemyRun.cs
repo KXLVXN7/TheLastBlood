@@ -9,6 +9,7 @@ public class EnemyRun : StateMachineBehaviour
     Transform player;
     Rigidbody2D rb;
     Enemy enemy;
+    EnemyAttack enemyAtt;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -27,12 +28,12 @@ public class EnemyRun : StateMachineBehaviour
 
         if (Vector2.Distance(player.position, rb.position) <= attackRange)
         {
-            animator.SetBool("enemyAttack", true);
+            animator.SetTrigger("enemyAttack");
         }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.ResetTrigger("enemyAttack");
     }
 }

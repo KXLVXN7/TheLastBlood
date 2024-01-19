@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+
     private float maxHP = 100;
-    private float currentHP = 100;
+    public float currentHP = 100;
 /*    public GameObject Dead;
     [SerializeField] private Image HPBar;*/
     public static bool GameIsPaused = false;
