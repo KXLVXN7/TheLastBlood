@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public Animator playerAnim;
     public Transform attackPoint;
-    public Vector3 direction;
+/*    public Vector3 direction;*/
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     private bool isAttacking = false;
@@ -82,11 +82,11 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = false;
     }
 
-    public void SetDirection(Vector3 newDirection)
+   /* public void SetDirection(Vector3 newDirection)
     {
        
         direction = newDirection;
-    }
+    }*/
     // Metode ini akan dipanggil ketika objek pemain bersentuhan dengan collider lain yang memiliki tag "Enemy"
     private void OnTriggerEnter(Collider other)
     {
