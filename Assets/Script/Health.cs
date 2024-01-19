@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    public GameObject ButtonMenu;
 
     private float maxHP = 100;
     public float currentHP = 100;
@@ -68,7 +69,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator DeathPauseAndShowUI()
     {
-/*        Dead.SetActive(true);*/
+        ButtonMenu.SetActive(true);
         Time.timeScale = 0f;
         yield return new WaitForSeconds(3.0f);
         // Di sini Anda dapat menambahkan logika lain, seperti mengakhiri permainan atau mengatur ulang level
